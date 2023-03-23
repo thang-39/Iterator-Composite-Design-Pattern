@@ -1,4 +1,9 @@
-public class MenuItem {
+import Composite.MenuComponent;
+import Composite.NullIterator;
+
+import java.util.Iterator;
+
+public class MenuItem extends MenuComponent {
 
     String name;
     String description;
@@ -15,6 +20,11 @@ public class MenuItem {
         this.price = price;
     }
 
+    @Override
+    public Iterator createIterator() {
+        return new NullIterator();
+    }
+
     public String getName() {
         return name;
     }
@@ -29,5 +39,15 @@ public class MenuItem {
 
     public boolean isVegetarian() {
         return vegetarian;
+    }
+
+    @Override
+    public void print() {
+        System.out.println(" " + getName());
+        if (isVegetarian()) {
+            System.out.println("(v)");
+        }
+        System.out.println(", " + getPrice());
+        System.out.println(" -- " + getDescription());
     }
 }
